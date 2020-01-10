@@ -79,7 +79,7 @@
 <script>
 import VueTypes from 'vue-types'
 import task from '@/classes/task'
-import editForm from './edit-form'
+import editForm from '@/components/edit-form'
 export default {
     components: {
         editForm

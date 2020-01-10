@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import task from '../classes/task'
+import task from '@/classes/task'
 export default {
     data() {
         return {
