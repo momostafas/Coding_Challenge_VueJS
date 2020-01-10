@@ -5,15 +5,17 @@
         <h3 class="headline mb-0">
           {{ task.title }}
         </h3>
-        <v-icon 
+      </div>
+              <v-icon 
           v-if="task.done" 
           color="success" 
           fab 
           dark>done</v-icon>
-
-      </div>
     </v-card-title>
-    <v-btn v-if="!task.done">
+    <v-btn 
+      v-if="!task.done"
+      @click="completeTask(task.id)"
+    >
       Complete
     </v-btn>
     <v-btn color="error">
@@ -24,11 +26,19 @@
 
 <script>
 import VueTypes from 'vue-types'
-
+import task from '@/classes/task'
 export default {
     props: {
         task: VueTypes.object
-    }
+    },
+    methods: {
+      completeTask(id){
+        task.update({
+          id: id,
+          done: true
+        })
+      }
+    },
 }
 </script>
 
