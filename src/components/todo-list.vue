@@ -1,10 +1,19 @@
 <template lang="html">
   <div>
-    <TodoItem 
-      v-for="task in tasks" 
-      :key="task.id" 
-      :task="task" 
-      class="mb-3" />
+    <div v-if="tasks.length > 0">
+      <TodoItem 
+        v-for="task in tasks" 
+        :key="task.id" 
+        :task="task" 
+        class="mb-3" />
+    </div>
+    <h1 
+      align="center"
+      v-else
+      class="grey--text"
+    >
+      You have no tasks to be done yet!
+    </h1>
   </div>
 </template>
 
@@ -12,14 +21,14 @@
 import TodoItem from '@/components/todo-item';
 import task from '@/classes/task'
 export default {
-  components: {
-    TodoItem,
-  },
-  computed:{
-    tasks(){
-      return task.all();
+    components: {
+        TodoItem,
+    },
+    computed: {
+        tasks() {
+            return task.all();
+        }
     }
-  }
 }
 </script>
 
