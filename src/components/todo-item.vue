@@ -11,11 +11,39 @@
         color="success" 
         fab 
         dark>done</v-icon>
+      <v-spacer />
+      <v-dialog 
+        v-model="editDialog" 
+        persistent 
+        max-width="500">
+        <v-btn 
+          slot="activator" 
+          fab 
+          title="Edit" 
+          small 
+          dark 
+          color="primary">
+          <v-icon>edit</v-icon>
+        </v-btn>
+        <v-card>
+          <editForm :task="task" />
+          <v-card-actions>
+            <v-spacer />
+            <v-btn 
+              color="blue darken-1" 
+              flat 
+              @click="editDialog = false">Close</v-btn>
+            <v-btn 
+              color="blue darken-1" 
+              flat 
+              @click="updateTask(task.id)">Save</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </v-card-title>
     <v-btn 
-      v-if="!task.done"
-      @click="completeTask(task.id)"
-    >
+      v-if="!task.done" 
+      @click="completeTask(task.id)">
       Complete
     </v-btn>
     <v-dialog 
@@ -51,25 +79,38 @@
 <script>
 import VueTypes from 'vue-types'
 import task from '@/classes/task'
+import editForm from './edit-form'
 export default {
-  data() {
-    return {
-                  deleteDialog: false,
-    }
-  },
+    components: {
+        editForm
+    },
+    data() {
+        return {
+            deleteDialog: false,
+            editDialog: false,
+        }
+    },
     props: {
         task: VueTypes.object
     },
     methods: {
-      completeTask(id){
-        task.update({
-          id: id,
-          done: true
-        })
-      },
-      deleteTask(id){
-        task.delete(id)
-      },
+        completeTask(id) {
+            task.update({
+                id: id,
+                done: true
+            })
+        },
+        deleteTask(id) {
+            task.delete(id)
+        },
+        updateTask(id) {
+            task.update({
+                id: id,
+                done: this.task.done,
+                title: this.task.title
+            })
+            this.editDialog = false;
+        }
     },
 }
 </script>
