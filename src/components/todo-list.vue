@@ -26,6 +26,9 @@ export default {
     },
     computed: {
         tasks() {
+            /**
+              * Get all todo tasks and sort them by not done to done then by title.
+            */
             return task.query()
             .orderBy('done')
             .orderBy('title')
@@ -34,6 +37,3 @@ export default {
     }
 }
 </script>
-
-<style lang="css">
-</style>

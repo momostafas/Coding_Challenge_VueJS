@@ -28,6 +28,9 @@ export default {
         }
     },
     methods: {
+        /**
+            * Add Task by title only from the data prop.
+        */
         insertTask(e) {
             e.preventDefault();
             if (this.$refs.form.validate()) {
@@ -42,6 +45,3 @@ export default {
     },
 }
 </script>
-
-<style lang="css">
-</style>

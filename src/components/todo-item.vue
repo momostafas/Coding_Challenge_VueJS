@@ -94,15 +94,27 @@ export default {
         task: VueTypes.object
     },
     methods: {
+        /**
+          * Change Status of task to Done.
+          * @param {String} taskID - ID of the task.
+        */
         completeTask(id) {
             task.update({
                 id: id,
                 done: true
             })
         },
+        /**
+          * Delete Certain Task.
+          * @param {String} taskID - ID of the task.
+        */
         deleteTask(id) {
             task.delete(id)
         },
+        /**
+          * Update Certain Task then close edit dialog.
+          * @param {String} taskID - ID of the task.
+        */
         updateTask(id) {
             task.update({
                 id: id,
@@ -114,6 +126,3 @@ export default {
     },
 }
 </script>
-
-<style lang="css">
-</style>
