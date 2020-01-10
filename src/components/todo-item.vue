@@ -6,11 +6,11 @@
           {{ task.title }}
         </h3>
       </div>
-              <v-icon 
-          v-if="task.done" 
-          color="success" 
-          fab 
-          dark>done</v-icon>
+      <v-icon 
+        v-if="task.done" 
+        color="success" 
+        fab 
+        dark>done</v-icon>
     </v-card-title>
     <v-btn 
       v-if="!task.done"
@@ -18,7 +18,10 @@
     >
       Complete
     </v-btn>
-    <v-btn color="error">
+    <v-btn
+      color="error"
+      @click="deleteTask(task.id)"
+    >
       Delete
     </v-btn>
   </v-card>
@@ -37,7 +40,10 @@ export default {
           id: id,
           done: true
         })
-      }
+      },
+      deleteTask(id){
+        task.delete(id)
+      },
     },
 }
 </script>
