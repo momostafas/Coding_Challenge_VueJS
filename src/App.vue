@@ -11,24 +11,18 @@
         fill-height
         justify-center
       >
-        <v-flex xs6>
-          <TodoForm />
-          <TodoList/>
-        </v-flex>
+        <home />
       </v-layout>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import TodoForm from '@/components/todo-form'
-import TodoList from '@/components/todo-list'
-
+import home from '@/views/home'
 export default {
   name: 'App',
   components: {
-    TodoForm,
-    TodoList,
+    home
   },
   data () {
     return {

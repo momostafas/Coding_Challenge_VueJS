@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <v-flex xs6>
-      <TodoForm />
-      <TodoList/>
-    </v-flex>
-  </div>
+  <v-flex xs6>
+    <TodoForm />
+    <TodoList/>
+  </v-flex>
 </template>
 <script>
 import TodoForm from '@/components/todo-form'
