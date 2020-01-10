@@ -26,7 +26,10 @@ export default {
     },
     computed: {
         tasks() {
-            return task.all();
+            return task.query()
+            .orderBy('done')
+            .orderBy('title')
+            .get();
         }
     }
 }
